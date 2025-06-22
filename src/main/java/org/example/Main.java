@@ -20,9 +20,13 @@ public class Main {
             System.out.println("----");
         }
 
+        System.out.println("Поиск пользователя:");
+        userService.getUserById(1L).ifPresent(System.out::println);
+
         userService.updateUser(2L, "Валера");
 
         userService.deleteUser(2L);
+
 
         context.close();
     }
