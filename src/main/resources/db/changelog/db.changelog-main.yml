@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: V1-users
+      author: vNekrylova
+      comment: Создание users
+      changes:
+        - sqlFile:
+            path: db/changelog/users/V1__init_users.sql

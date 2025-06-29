@@ -1,33 +1,29 @@
 package org.example.entity;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "users")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "username")
     private String username;
 
-    public User() {}
-
-    public User(Long id, String username) {
-        this.id = id;
-        this.username = username;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
+    @Override
     public String toString() {
-        return "ID пользователя: " + id + "\n" + "Имя пользователя: " + username;
+        return "ID пользователя: " + id + "; Имя пользователя: " + username;
     }
 }
