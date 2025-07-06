@@ -23,23 +23,32 @@ public class UserService implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) {
-        createUser("Рия");
+        //createUser("Рия");
 
-        getAllUsers().forEach(user -> log.info("Found user {}", user));
+        log.info("Вывод пользователей:");
+        getAllUsers().forEach(user -> log.info("{}", user));
 
-        getUserById(4L).ifPresent(user -> log.info("Found user {}", user));
+        getUserById(3L);
 
-        updateUser(4L, "Лия");
+        //updateUser(4L, "Лия");
 
-        deleteUser(4L);
+        //deleteUser(4L);
     }
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public Optional<User> getUserById(Long id) {
-        return userRepository.findById(id);
+    public User getUserById(Long id) {
+        Optional<User> userFind = userRepository.findById(id);
+        if (userFind.isPresent()) {
+            log.info("Найден пользователь {}", userFind.get());
+            return userFind.get();
+        }
+        else {
+            log.info("Пользователь с id {} не найден", id);
+            return null;
+        }
     }
 
     public void createUser(String username) {
