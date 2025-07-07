@@ -24,6 +24,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "ID пользователя: " + id + "; Имя пользователя: " + username;
+        return "User [id=" + id + ", username=" + username + "]";
     }
 }
