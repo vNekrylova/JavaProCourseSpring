@@ -26,4 +26,9 @@ public class ProductController {
     public ProductDto findById(@PathVariable Long id) {
         return productService.getProductById(id);
     }
+
+    @GetMapping(value = "/user/{id}")
+    public List<ProductDto> findUserProducts(@PathVariable Long id) {
+        return productService.getProductsByUserId(id);
+    }
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.example.dto.ProductDto;
 import org.example.entity.Product;
+import org.example.mapper.ProductMapper;
 import org.example.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,14 +15,12 @@ import java.util.List;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
     public List<ProductDto> getAllProducts() {
         return productRepository.findAll()
                 .stream()
-                .map(product -> new ProductDto(
-                        product.getAccountNumber(),
-                        product.getBalance(),
-                        product.getProductType()))
+                .map(productMapper::toDto)
                 .toList();
     }
 
@@ -33,10 +32,7 @@ public class ProductService {
     public List<ProductDto> getProductsByUserId(Long userId) {
         return productRepository.findAllByUserId(userId)
                 .stream()
-                .map(product -> new ProductDto(
-                        product.getAccountNumber(),
-                        product.getBalance(),
-                        product.getProductType()))
+                .map(productMapper::toDto)
                 .toList();
     }
 }
