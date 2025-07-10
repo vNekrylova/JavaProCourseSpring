@@ -6,3 +6,11 @@ databaseChangeLog:
       changes:
         - sqlFile:
             path: db/changelog/users/V1__init_users.sql
+
+  - changeSet:
+      id: V1-products
+      author: vNekrylova
+      comment: Создание products
+      changes:
+        - sqlFile:
+            path: db/changelog/products/V1__init_products.sql
