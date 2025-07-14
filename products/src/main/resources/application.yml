@@ -1,6 +1,6 @@
 server:
   servlet:
-    context-path: "/my-app"
+    context-path: "/product-app"
   port: 8181
 
 spring:
