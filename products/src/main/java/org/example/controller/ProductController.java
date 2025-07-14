@@ -1,12 +1,9 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.dto.ProductDto;
+import org.example.dto.*;
 import org.example.service.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,5 +27,10 @@ public class ProductController {
     @GetMapping(value = "/user/{id}")
     public List<ProductDto> findUserProducts(@PathVariable Long id) {
         return productService.getProductsByUserId(id);
+    }
+
+    @PatchMapping(value = "/payment/execute")
+    public ExecuteResponseDto paymentExecute(@RequestBody ExecuteDto executeDto) {
+        return productService.updateProduct(executeDto);
     }
 }
